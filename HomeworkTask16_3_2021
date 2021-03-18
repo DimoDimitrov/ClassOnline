@@ -1,0 +1,63 @@
+package tasks;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class HomeworkTask16_3_2021 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Input the arrays:");
+		System.out.println("Don't use more than four split lines please!");
+		String input = scan.nextLine();
+		ArrayList<String> list = new ArrayList<>(Arrays.asList(input.split(" ")));
+		ArrayList<String> split1 = new ArrayList<>();
+		ArrayList<String> split2 = new ArrayList<>();
+		ArrayList<String> split3 = new ArrayList<>();	
+		ArrayList<String> split4 = new ArrayList<>();
+		ArrayList<String> split5 = new ArrayList<>();
+		ArrayList<String> result = new ArrayList<>();
+		int counter = 0;
+		int checkpoint = 0;
+		String line = "|";
+
+		for (int i = 0; i < list.size(); i++) {
+			list.removeAll(Arrays.asList(null,""));
+			counter++;
+			if (line.equals(list.get(i))) {
+				list.remove(i);
+				checkpoint++;
+				
+				if (checkpoint <= 1) {	
+				List<String> temp =  list.subList(0, i);
+				split1.addAll(temp);
+				}
+				if (checkpoint <= 1 && checkpoint >= 1) {
+				List<String> temp2 =  list.subList(i, counter);
+				split2.addAll(temp2);
+				}
+				if (checkpoint < 3 && checkpoint >= 2) {
+					List<String> temp3 =  list.subList(i, counter);
+					split3.addAll(temp3);
+					}
+				if (checkpoint <= 3 && checkpoint >= 3) {
+					List<String> temp4 =  list.subList(i, counter);
+					split4.addAll(temp4);
+					}
+				if (checkpoint < 100 && checkpoint >= 4) {
+					List<String> temp5 =  list.subList(i, counter);
+					split5.addAll(temp5);
+					}
+			}
+		}
+		result.addAll(split5);
+		result.addAll(split4);
+		result.addAll(split3);
+		result.addAll(split2);
+		result.addAll(split1);
+		System.out.println("Final result " + result);
+	}
+
+}
