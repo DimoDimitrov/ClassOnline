@@ -1,0 +1,39 @@
+package tasks;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Homework19_3_2021 {
+
+	static boolean checkPerfectSquare(double x) {
+		double sq = Math.sqrt(x);
+		return ((sq - Math.floor(sq)) == 0);
+	}
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Input the array:");
+		String input = scan.nextLine();
+
+		ArrayList<String> Stringlist = new ArrayList<>(Arrays.asList(input.split(" ")));
+		ArrayList<Integer> Intlist = new ArrayList<>();
+		ArrayList<Integer> result = new ArrayList<>();
+
+		for (String stringValue : Stringlist) {
+			Intlist.add(Integer.parseInt(stringValue));
+		}
+
+		for (int i = 0; i < Intlist.size(); i++) {
+			if (checkPerfectSquare(Intlist.get(i))) {
+				result.add(Intlist.get(i));
+			}
+		}
+
+		Collections.sort(result);
+		
+		System.out.println("Output: " + result);
+	}
+}
