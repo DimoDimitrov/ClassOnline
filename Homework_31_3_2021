@@ -1,0 +1,39 @@
+package tasks;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Homework_31_3_2021 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Import the elements: ");
+		String input = scan.nextLine();
+		ArrayList<String> list = new ArrayList<>(Arrays.asList(input.split(" ")));
+		ArrayList<Integer> parsed = new ArrayList<>();
+		int[] values = new int[list.size()];
+		int counter = 0;
+
+		for (int i = 0; i < list.size(); i++) {
+			parsed.add(Integer.parseInt(list.get(i)));
+			values[i] = parsed.get(i);
+		}
+
+		Arrays.sort(values);
+
+		for (int i = 0; i < values.length; i++) {
+			counter++;
+			if (i == values.length - 1) {
+				System.out.println(values[i] + " -> " + counter);
+				break;
+			}
+			if (values[i] != values[i + 1]) {
+				System.out.println(values[i] + " -> " + counter);
+				counter = 0;
+			}
+		}
+
+	}
+
+}
