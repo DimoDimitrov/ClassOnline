@@ -21,7 +21,7 @@ public class HomeworkTask5 {
 		Arrays.sort(values);
 		
 		for (int i = 0; i < values.length; i++) {
-			System.out.print(values[i] + " <= ");
+			System.out.print(values[i] + " <= ");// Накрая излиза допълнително <=
 		}
 	}
 
