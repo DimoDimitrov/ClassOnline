@@ -1,0 +1,60 @@
+package homeworks;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HomeworkTask1 {
+
+	static void getMostFrequentElement(int inputArray[]) {
+		HashMap<Integer, Integer> elementCountMap = new HashMap<Integer, Integer>();
+		
+		for (int i : inputArray) {
+			if (elementCountMap.containsKey(i)) {
+				elementCountMap.put(i, elementCountMap.get(i) + 1);
+			} else {
+				elementCountMap.put(i, 1);
+			}
+		}
+		int element = 0;
+		int frequency = 1;
+		Set<Entry<Integer, Integer>> entrySet = elementCountMap.entrySet();
+
+		for (Entry<Integer, Integer> entry : entrySet) {
+			if (entry.getValue() > frequency) {
+				element = entry.getKey();
+				frequency = entry.getValue();
+			}
+		}
+
+		if (frequency > 1) {
+			System.out.println("Числото " + element + " е най - често срещаното (среща се " + frequency + " пъти)");
+		} else {
+			System.out.println("No frequent element. All elements are unique.");
+		}
+	}
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Import the elements: ");
+		String input = scan.nextLine();
+		ArrayList<String> list = new ArrayList<>(Arrays.asList(input.split(" ")));
+		ArrayList<Integer> parsed = new ArrayList<>();
+
+		int[] values = new int[list.size()];
+		int n = values.length;
+		int counter = 0;
+
+		for (int i = 0; i < list.size(); i++) {
+			parsed.add(Integer.parseInt(list.get(i)));
+			values[i] = parsed.get(i);
+		}
+		 getMostFrequentElement(values);
+	}
+
+}
